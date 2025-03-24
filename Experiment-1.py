@@ -8,8 +8,7 @@ from sklearn.ensemble import RandomForestRegressor,AdaBoostRegressor
 import numpy as np
 
 st.title('Insulin Concentration Prediction in Rats')
-st.markdown(' Done By Dr.Surendiran B,Udhayaprasad, Shrihari and Ayon Biswas ')
-
+st.info("Dataset Link: https://data.mendeley.com/datasets/pjvmhxkvy8/1 ")
 file_upload = st.file_uploader("Choose Your File:",type='csv')
 if file_upload is not None:
     st.write("File Successfully Uploaded")
@@ -63,7 +62,7 @@ if file_upload is not None:
  
 
     if(model=='Random Forest'):
-        Rmodel = RandomForestRegressor(n_estimators=1000,random_state=42)
+        Rmodel = RandomForestRegressor(n_estimators=100,random_state=42)
         Rmodel.fit(x_train,y_train)
         Predict = Rmodel.predict(x_test) 
         st.subheader('RandomForest:')
@@ -73,7 +72,7 @@ if file_upload is not None:
         st.write("Random Forest:",Mse)
 
     elif(model=='AdaBoost'):
-           Amodel = AdaBoostRegressor(n_estimators=1000,random_state=42)
+           Amodel = AdaBoostRegressor(n_estimators=100,random_state=42)
            Amodel.fit(x_train,y_train)
            Apredict = Amodel.predict(x_test)
            st.subheader('AdaBoost:')
@@ -84,3 +83,11 @@ if file_upload is not None:
 
 else:
     st.write("File is not uploaded")
+
+footer_html = """
+<div style='text-align: center;'>
+<p>Website Developed by Udhayaprasad Student at National Institute of Technology Puducherry</p>
+</div>
+"""
+st.divider()
+st.markdown(footer_html, unsafe_allow_html=True)
